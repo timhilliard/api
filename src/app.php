@@ -16,5 +16,8 @@ $app->register(new GuzzleServiceProvider(), array(
 $app->get('/travis', function($name) use($app) {
   return 'You wanna test this action?';
 });
+$app->get('/patch-check', function($name) use($app) {
+  return 'You wanna check this patch?';
+});
 
 $app->run();
