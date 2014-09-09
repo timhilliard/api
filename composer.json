@@ -1,6 +1,6 @@
 {
   "require": {
     "silex/silex": "~1.2",
-    "guzzle/silex-provider": "1.0.*@dev"
+    "guzzlehttp/guzzle": "4.2.2"
   }
 }
