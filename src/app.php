@@ -28,7 +28,7 @@ $app->get('/test', function($name) use($app) {
     'patch' => $patch,
   );
   $client = new GuzzleHttp\Client();
-  $res = $client->get('http://107.170.87.127:8080/job/test-patch/build?token=SECRET', [
+  $res = $client->get('http://107.170.87.127:8080/job/test-patch/build', [
     'query' => $query,
   ]);
   
