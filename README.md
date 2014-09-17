@@ -65,3 +65,7 @@ To deploy to the PROD run the following command:
 ```
 $ bundle exec cap prod deploy
 ```
+
+## Puppet
+
+**To be written.**
