@@ -9,6 +9,22 @@ Provides a front facing API for the DrupalCI project.
 
 **To be written.**
 
+## Phing
+
+### Installation
+
+We use Phing as a build tool for this project. Please install Phing via the following instructions:
+
+https://github.com/phingofficial/phing#installation
+
+### Usage
+
+We have a single task for this project that runs a series of steps. These range from preparation steps to testing. To run this build run the following command:
+
+```
+$ phing
+```
+
 ## Vagrant
 
 **Still to be implemented.**
