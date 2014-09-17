@@ -13,6 +13,9 @@ $app = new Application();
  */
 if (getenv('ENV') == 'prod') {
   $app['guzzle'] = new GuzzleHttp\Client();
+
+  // This is added by Capistrano on deployment.
+  $config = 'config.yml';
 }
 else {
   $app['guzzle'] = new GuzzleMock();

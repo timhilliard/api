@@ -1,5 +1,9 @@
 <?php
 
+namespace API;
+
+use GuzzleHttp\Client as Guzzle;
+
 /**
  * Class Jenkins
  * A generic build trigger class for Jenkins remote API calls.
@@ -9,7 +13,7 @@ class Jenkins {
   /**
    * @var string
    */
-  protected $protocol = 'http://';
+  protected $protocol = 'http';
 
   /**
    * @var string
@@ -47,12 +51,23 @@ class Jenkins {
   protected $client = false;
 
   public function __construct($client) {
-  	if (!empty($guzzle)) {
-      $this->client = $guzzle;
+  	if (!empty($client)) {
+      $this->client = $client;
   	}
   	else {
-  	  $this->client = new GuzzleHttp\Client();
+  	  $this->client = new Guzzle();
   	}
+  }
+
+  /**
+   * Helper function to build the URL of the Jenkins host.
+   */
+  protected function buildUrl() {
+    $protocol = $this->getProtocol();
+    $host = $this->getHost();
+    $port = $this->getPort();
+    $build = $this->getBuild();
+    return $protocol . '://' . $host . ':' . $port . '/job/' . $build . '/buildWithParameters';
   }
 
   /**
@@ -85,24 +100,11 @@ class Jenkins {
     }
 
     // Post the request to Jenkins.
-    $build = $this->getBuild();
+    $url = $this->buildUrl();
     $client = $this->getClient();
-    $client->get($build, [
+    return $client->get($url, [
       'query' => $this->getQuery(),
     ]);
-
-    return "The request has been passed on to the dispatcher.";
-  }
-
-  /**
-   * Helper function to build the URL of the Jenkins host.
-   */
-  protected function buildUrl() {
-    $protocol = $this->getProtocol();
-    $host = $this->getHost();
-    $port = $this->getPort();
-    $build = $this->getBuild();
-    return $protocol . $host . ':' . $port . '/job/' . $build . '/buildWithParameters';
   }
 
   /**

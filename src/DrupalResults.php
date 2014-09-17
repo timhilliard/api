@@ -1,5 +1,7 @@
 <?php
 
+namespace API;
+
 /**
  * Class DrupalResults
  * Currently a placeholder for the DrupalCI Results site.

@@ -1,5 +1,7 @@
 <?php
 
+namespace API;
+
 /**
  * Class GuzzleMock
  * A mock Guzzle class.
