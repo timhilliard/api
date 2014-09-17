@@ -2,8 +2,6 @@
 
 namespace API;
 
-use GuzzleHttp\Client as Guzzle;
-
 /**
  * Class Jenkins
  * A generic build trigger class for Jenkins remote API calls.
@@ -28,11 +26,6 @@ class Jenkins {
   /**
    * @var string
    */
-  protected $path = '';
-
-  /**
-   * @var string
-   */
   protected $token = '';
 
   /**
@@ -51,12 +44,7 @@ class Jenkins {
   protected $client = false;
 
   public function __construct($client) {
-  	if (!empty($client)) {
-      $this->client = $client;
-  	}
-  	else {
-  	  $this->client = new Guzzle();
-  	}
+    $this->setClient($client);
   }
 
   /**
@@ -147,20 +135,6 @@ class Jenkins {
    */
   public function setHost($host) {
     $this->host = $host;
-  }
-
-  /**
-   * @return string
-   */
-  public function getPath() {
-    return $this->path;
-  }
-
-  /**
-   * @param string $path
-   */
-  public function setPath($path) {
-    $this->path = $path;
   }
 
   /**
