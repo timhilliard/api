@@ -1,0 +1,3 @@
+jenkins:
+  host: localhost
+  token: 123456

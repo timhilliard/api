@@ -8,36 +8,58 @@ use Symfony\Component\HttpFoundation\Response;
 
 $app = new Application();
 
+/**
+ * Environment.
+ */
+if (getenv('ENV') == 'prod') {
+  $app['guzzle'] = new GuzzleHttp\Client();
+}
+else {
+  $app['guzzle'] = new GuzzleMock();
+  $config = 'tests/config.yml';
+}
+
+/**
+ * Services.
+ */
+$app->register(new DerAlex\Silex\YamlConfigServiceProvider($config));
+
+/**
+ * Error handling.
+ */
 $app->error(function (\Exception $e, $code) {
-    return new Response($e);
+  // @todo Funny error page.
+  return new Response($e);
 });
 
-// Routes.
-$app->get('/test', function (Request $request) { 
+/**
+ * Route for sending test jobs to TestBot infrastructure.
+ */
+$app->get('/travis', function (Request $request) use ($app) {
   $repository = $request->get('repository');
   $branch = $request->get('branch');
   $patch = $request->get('patch');
-
-  // Ensure we have a repository.
-  if (!$repository) {
-    return 'You need to specify a repository.';
-  }
-  if (!$branch) {
-    return 'You need to specify a branch.';
-  }
-
   $query = array(
-    'token' => 'kJhvKGGyAHeRzLjrstnMbS9S',
     'repository' => $repository,
     'branch' => $branch,
     'patch' => $patch,
   );
-  $client = new GuzzleHttp\Client();
-  $res = $client->get('http://107.170.87.127:8080/job/test-patch/buildWithParameters', [
-    'query' => $query,
-  ]);
-  
-  return 'We have sent your build to the dispatcher.';
+
+  // Let the request begin.
+  $jenkins = new Jenkins($app['guzzle']);
+  $jenkins->setHost($app['config']['jenkins']['host']);
+  $jenkins->setToken($app['config']['jenkins']['token']);
+  $jenkins->setBuild('test');
+  $jenkins->setQuery($query);
+  $return = $jenkins->send();
+  return $return;
+});
+
+/**
+ * Route for sending patch merge checks
+ */
+$app->get('/patch/check', function (Request $request) {
+  return 'This is not yet implemented.';
 });
 
 $app->run();

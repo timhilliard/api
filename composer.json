@@ -1,6 +1,7 @@
 {
   "require": {
     "silex/silex": "~1.2",
-    "guzzlehttp/guzzle": "4.2.2"
+    "guzzlehttp/guzzle": "4.2.2",
+    "deralex/yaml-config-service-provider": "1.0.x-dev"
   }
 }
