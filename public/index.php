@@ -39,7 +39,7 @@ $app->error(function (\Exception $e, $code) {
 /**
  * Route for sending test jobs to TestBot infrastructure.
  */
-$app->get('/travis', function (Request $request) use ($app) {
+$app->get('/test', function (Request $request) use ($app) {
   $repository = $request->get('repository');
   $branch = $request->get('branch');
   $patch = $request->get('patch');
