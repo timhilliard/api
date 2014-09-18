@@ -90,9 +90,11 @@ class Jenkins {
     // Post the request to Jenkins.
     $url = $this->buildUrl();
     $client = $this->getClient();
-    return $client->get($url, [
+    $client->get($url, [
       'query' => $this->getQuery(),
     ]);
+
+    return "The message has been sent to the dispatcher.";
   }
 
   /**
