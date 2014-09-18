@@ -73,5 +73,5 @@ $ bundle exec cap prod deploy
 Puppet and Librarian Puppet can be installed via bundler (http://bundler.io). Check out the following script:
 
 ```
-sh puppet/provision.sh
+puppet/provision.sh
 ```
