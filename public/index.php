@@ -33,8 +33,7 @@ $app->register(new DerAlex\Silex\YamlConfigServiceProvider($config));
  * Error handling.
  */
 $app->error(function (\Exception $e, $code) {
-  // @todo Funny error page.
-  return new Response($e);
+  return "Oh no! Something went wrong. Don't even think about contacting your sys admin.";
 });
 
 /**

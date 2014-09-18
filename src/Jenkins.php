@@ -2,6 +2,8 @@
 
 namespace API;
 
+use Silex\Exception as Exception;
+
 /**
  * Class Jenkins
  * A generic build trigger class for Jenkins remote API calls.
@@ -59,25 +61,25 @@ class Jenkins {
   }
 
   /**
-   * Send the data to the remote Jenkins host.
+   * Helper function to build the request.
    */
-  public function send() {
+  public function sendRequest() {
     // Ensure we have a host.
     $host = $this->getHost();
     if (!$host) {
-      throw new Exception('Please provide a Jenkins host.');
+      return 'Please provide a Jenkins host.';
     }
 
     // Ensure we have a build.
     $build = $this->getBuild();
     if (!$build) {
-      throw new Exception('Please provide a Jenkins build.');
+      return 'Please provide a Jenkins build.';
     }
 
     // Ensure we have a port.
     $port = $this->getPort();
     if (!$port) {
-      throw new Exception('Please provide a Jenkins port.');
+      return 'Please provide a Jenkins port.';
     }
 
     // Add the Token to the query if it is set.
@@ -90,10 +92,18 @@ class Jenkins {
     // Post the request to Jenkins.
     $url = $this->buildUrl();
     $client = $this->getClient();
-    $client->get($url, [
+    $request = $client->get($url, [
       'query' => $this->getQuery(),
     ]);
 
+    return $request;
+  }
+
+  /**
+   * Send the data to the remote Jenkins host.
+   */
+  public function send() {
+    $this->sendRequest();
     return "The message has been sent to the dispatcher.";
   }
 

@@ -10,38 +10,24 @@ class JenkinsTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Build a Jenkins object and get the URL that will be used for submission.
-   * @expectedException Exception
    */
   public function testBuildUrl() {
-    $this->setExpectedException('Exception');
-
     // Build.
     $guzzle = new GuzzleMock();
     $jenkins = new Jenkins($guzzle);
     $jenkins->setProtocol('https');
-
-    // Check for enforcement of host.
-    $request = $jenkins->send();
     $jenkins->setHost('localhost');
-
-    // Check for enforcement of build.
-    $request = $jenkins->send();
-    $jenkins->setBuild('foo');
-
-    // Check for enforcement of port.
-    $request = $jenkins->send();
     $jenkins->setPort('9090');
-
-    // Add the rest so we can test a successful return.
     $jenkins->setToken('99999999');
     $jenkins->setQuery(array(
       'repository' => 'baz',
       'branch' => 'bar',
       'patch' => 'bas'
     ));
-    $request = $jenkins->send();
+    $jenkins->setBuild('foo');
+    $request = $jenkins->sendRequest();
 
-    // Check a successful submission.
+    // Check a successful request.
     $required = array('https://localhost:9090/job/foo/buildWithParameters', array(
       'query' => array(
         'token' => '99999999',
@@ -51,6 +37,10 @@ class JenkinsTest extends \PHPUnit_Framework_TestCase {
       ),
     ));
     $this->assertEquals($required, $request);
+
+    // Check a successful return message.
+    $message = $jenkins->send();
+    $this->assertEquals('The message has been sent to the dispatcher.', $message);
   }
 
 }
