@@ -2,11 +2,13 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+use API\GuzzleMock as GuzzleMock;
+use API\Jenkins as Jenkins;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-$app = new Application();
+$app = new Silex\Application();
 
 /**
  * Environment.
@@ -19,7 +21,7 @@ if (getenv('ENV') == 'prod') {
 }
 else {
   $app['guzzle'] = new GuzzleMock();
-  $config = 'tests/config.yml';
+  $config = '../tests/config.yaml';
 }
 
 /**

@@ -2,3 +2,5 @@ vendor
 .idea
 bin
 build
+.bundle
+.vagrant

@@ -1,0 +1,35 @@
+GIT
+  remote: git://github.com/puppetlabs/puppetlabs-apache.git
+  ref: 1.1.1
+  sha: 212e09d383c7382aa269e8c00e5c20c1c3808b2d
+  specs:
+    puppetlabs/apache (0.0.1)
+
+GIT
+  remote: git://github.com/puppetlabs/puppetlabs-apt.git
+  ref: 1.4.0
+  sha: 924e89289b93db60ef0f16a4e71579fa88e037a6
+  specs:
+    puppetlabs/apt (1.4.0)
+      puppetlabs/stdlib (>= 2.2.1)
+
+GIT
+  remote: git://github.com/puppetlabs/puppetlabs-stdlib.git
+  ref: 4.1.0
+  sha: 1ffd72daaaf21e71e762b6cd543043680bdb6694
+  specs:
+    puppetlabs/stdlib (4.1.0)
+
+GIT
+  remote: git://github.com/treehouseagency/puppet-pear.git
+  ref: master
+  sha: d504379ce98e6477b720c37c2c5bdfdf26977dd9
+  specs:
+    treehouseagency/pear (0.0.1)
+
+DEPENDENCIES
+  puppetlabs/apache (>= 0)
+  puppetlabs/apt (>= 0)
+  puppetlabs/stdlib (>= 0)
+  treehouseagency/pear (>= 0)
+
