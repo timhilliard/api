@@ -51,7 +51,7 @@ Capistrano is a great tool for deployment web applications.
 Capistrano can be installed via bundler (http://bundler.io). Run the following command:
 
 ```
-bundle install
+bundle install --path vendor/bundle
 ```
 
 To deploy to the DEV run the following command:
