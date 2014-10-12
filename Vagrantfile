@@ -49,5 +49,5 @@ Vagrant.configure("2") do |config|
   end
 
   # Provision.
-  config.vm.provision :shell, :path => "puppet/provision.sh"
+  config.vm.provision :shell, :path => "puppet/vagrant.sh"
 end

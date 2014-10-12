@@ -3,7 +3,7 @@
 # Script: provision.sh
 # Author: Nick Schuch
 
-DIR='/var/www/api/current/puppet'
+DIR=`pwd`
 
 # Helper function to install packages.
 yumInstall() {
@@ -20,12 +20,21 @@ gemInstall() {
   fi
 }
 
-yumInstall ruby-devel
+# Packages.
+yumInstall centos-release-SCL
+yumInstall ruby193
+yumInstall ruby193-ruby-devel
 yumInstall git-all
 yumInstall vim-common
+
+# Gems.
+sudo gem update --system
 gemInstall bundler
 
 # Run librarian-puppet to pull down contrib modules.
-cd $DIR && bundle install
-cd $DIR && bundle exec librarian-puppet install
-cd $DIR && sudo -E puppet apply --modulepath $DIR/modules $DIR/site.pp
+echo "Running bundler....."
+cd $DIR && scl enable ruby193 "bundle install --path vendor/bundle"
+echo "Running librarian puppet....."
+cd $DIR && scl enable ruby193 "bundle exec librarian-puppet install"
+echo "Running provision....."
+cd $DIR && sudo -E scl enable ruby193 "puppet apply --modulepath $DIR/modules $DIR/site.pp"
