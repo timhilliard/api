@@ -42,7 +42,9 @@ $ vagrant up
 
 ## Deployment
 
-**Still to be implemented.**
+**Still to be implemented properly. Added to this project in an early release form.**
+
+## Capistrano
 
 Capistrano is a great tool for deployment web applications.
 
