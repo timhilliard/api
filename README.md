@@ -27,7 +27,7 @@ $ phing
 
 ## Vagrant
 
-**Still to be implemented.**
+**Still to be implemented properly. Added to this project in an early release form.**
 
 Vagrant is very handy. If you do not run Docker natively the following VM will provide a method for debugging and building and executing of containers locally.
 
@@ -42,8 +42,6 @@ $ vagrant up
 
 ## Deployment
 
-**Still to be implemented.**
-
 Capistrano is a great tool for deployment web applications.
 
 ### Install
@@ -51,7 +49,7 @@ Capistrano is a great tool for deployment web applications.
 Capistrano can be installed via bundler (http://bundler.io). Run the following command:
 
 ```
-bundle install
+bundle install --path vendor/bundle
 ```
 
 To deploy to the DEV run the following command:
