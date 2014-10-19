@@ -1,0 +1,9 @@
+# config/routes.yml
+
+home:
+  path: /
+  defaults: { _controller: 'API\APIController::home' }
+
+api_1:
+  prefix: /drupalci/api/1
+  resource: routes/1.yml
