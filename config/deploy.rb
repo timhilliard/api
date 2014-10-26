@@ -1,5 +1,3 @@
-role :app, "10.83.0.6"
-set :gateway, "root@140.211.169.76"
 set :user, "root"
 set :runner, "root"
 set :port, 22
@@ -7,6 +5,7 @@ set :deploy_to, '/var/www/api'
 set :application, 'api.drupalci.org'
 set :repository, "https://github.com/nickschuch/drupalci-api.git"
 ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
 
 # Register hooks.
 before "deploy:create_symlink", "puppet:apply"
