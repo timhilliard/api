@@ -3,6 +3,8 @@
 namespace API;
 
 use Silex\Exception as Exception;
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Message\Request;
 
 /**
  * Class Jenkins
@@ -45,7 +47,8 @@ class Jenkins {
    */
   protected $client = false;
 
-  public function __construct($client) {
+  public function __construct() {
+    $client = new GuzzleClient;
     $this->setClient($client);
   }
 
@@ -92,19 +95,30 @@ class Jenkins {
     // Post the request to Jenkins.
     $url = $this->buildUrl();
     $client = $this->getClient();
-    $request = $client->get($url, [
+    $response = $client->get($url, [
+      // @todo, Once we get signed certificates we should remove.
+      'verify' => false,
       'query' => $this->getQuery(),
     ]);
 
-    return $request;
+    return $response;
   }
 
   /**
    * Send the data to the remote Jenkins host.
    */
   public function send() {
-    $this->sendRequest();
-    return "The message has been sent to the dispatcher.";
+    $response = $this->sendRequest();
+
+    // We get the location of the build in the queue so we can track it.
+    // First we make sure it is in the right format.
+    $url = $this->buildUrl();
+    $location = $response->getHeader('Location');
+    if (strpos($location, $url)) {
+      return false;
+    }
+
+    return $location;
   }
 
   /**

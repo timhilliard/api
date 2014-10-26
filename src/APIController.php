@@ -24,7 +24,7 @@ class APIController implements APIInterface {
    * Runs a job.
    * @return id.
    */
-  public function jobRun() {
+  public function jobRun(Application $app) {
     return new Response("Not supported.");
   }
 
@@ -32,7 +32,7 @@ class APIController implements APIInterface {
    * Get the status of a job.
    * @return status.
    */
-  public function jobStatus($id) {
+  public function jobStatus(Application $app, $id) {
     return new Response("Not supported.");
   }
 
@@ -40,7 +40,7 @@ class APIController implements APIInterface {
    * Cancel a job.
    * @return id.
    */
-  public function jobCancel($id) {
+  public function jobCancel(Application $app, $id) {
     return new Response("Not supported.");
   }
 
@@ -48,7 +48,7 @@ class APIController implements APIInterface {
    * Restarts a job.
    * @return id.
    */
-  public function jobRestart($id) {
+  public function jobRestart(Application $app, $id) {
     return new Response("Not supported.");
   }
 
@@ -56,7 +56,7 @@ class APIController implements APIInterface {
    * Gets a jobs console output from the dispatcher.
    * @return console output.
    */
-  public function jobConsole($id) {
+  public function jobConsole(Application $app, $id) {
     return new Response("Not supported.");
   }
 
@@ -64,7 +64,7 @@ class APIController implements APIInterface {
    * Get the results of the build.
    * @return results.
    */
-  public function jobResults($id) {
+  public function jobResults(Application $app, $id) {
     return new Response("Not supported.");
   }
 
@@ -72,7 +72,7 @@ class APIController implements APIInterface {
    * Authenticate against the API.
    * @return success.
    */
-  public function auth($token) {
+  public function auth(Application $app, $token) {
     return new Response("Not supported.");
   }
 
@@ -80,7 +80,7 @@ class APIController implements APIInterface {
    * Get global API status.
    * @return status.
    */
-  public function status() {
+  public function status(Application $app) {
     return new Response("Not supported.");
   }
 

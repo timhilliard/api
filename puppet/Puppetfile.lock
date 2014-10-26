@@ -23,14 +23,28 @@ GIT
       puppetlabs-stdlib (>= 2.4.0)
 
 GIT
+  remote: git://github.com/puppetlabs/puppetlabs-firewall.git
+  ref: 1.1.3
+  sha: fa60f5acdfb72a26885a98725a960802b3d1da4f
+  specs:
+    puppetlabs-firewall (1.1.3)
+
+GIT
   remote: git://github.com/puppetlabs/puppetlabs-stdlib.git
   ref: 4.3.2
   sha: da11903285aca54ac399d66cb453f5a8db3ac355
   specs:
     puppetlabs-stdlib (4.3.2)
 
+PATH
+  remote: custom/api
+  specs:
+    drupalci-api (0.0.1)
+
 DEPENDENCIES
+  drupalci-api (>= 0)
   example42-yum (>= 0)
   puppetlabs-apache (>= 0)
+  puppetlabs-firewall (>= 0)
   puppetlabs-stdlib (>= 0)
 

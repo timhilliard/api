@@ -29,10 +29,36 @@ node default {
   include apache::mod::php
 
   apache::vhost { $fqdn:
-    docroot          => '/var/www/api/current/public',
-    manage_docroot   => false,
-    priority         => '25',
-    override         => [ 'ALL' ],
+    port           => '80',
+    docroot        => '/var/www/api/current/public',
+    manage_docroot => false,
+    priority       => '25',
+    override       => [ 'ALL' ],
+  }
+
+  ##
+  # Firewall.
+  ##
+
+  include firewall
+  firewall { '000 accept all icmp':
+    proto   => 'icmp',
+    action  => 'accept',
+  }
+  firewall { '001 accept all to lo interface':
+    proto   => 'all',
+    iniface => 'lo',
+    action  => 'accept',
+  }
+  firewall { '002 accept related established rules':
+    proto   => 'all',
+    state => ['RELATED', 'ESTABLISHED'],
+    action  => 'accept',
+  }
+  firewall { '100 allow http and https access':
+    port   => [80, 443],
+    proto  => tcp,
+    action => accept,
   }
 
 }

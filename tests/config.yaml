@@ -1,3 +1,4 @@
 jenkins:
-  host: localhost
+  host:  localhost
   token: 123456
+  job:   test
