@@ -14,9 +14,9 @@ yumInstall() {
 
 # Helper function to install gems packages.
 gemInstall() {
-  COUNT=`gem list | grep ${1} | wc -l`
+  COUNT=`scl enable ruby193 "gem list | grep ${1} | wc -l"`
   if [ "${COUNT}" -eq "0" ]; then
-    gem install $1
+    scl enable ruby193 "gem install $1"
   fi
 }
 

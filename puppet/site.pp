@@ -78,4 +78,10 @@ node default {
     action => accept,
   }
 
+  ##
+  # Misc.
+  ##
+
+  Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
+
 }
