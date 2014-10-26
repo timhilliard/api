@@ -13,8 +13,8 @@ $app = new Silex\Application();
 /**
  * Environment.
  */
-if (getenv('ENV') == 'prod') {
-  $config = 'config.yml';
+if (file_exists('config.yaml')) {
+  $config = 'config.yaml';
 }
 else {
   $config = '../tests/config.yaml';

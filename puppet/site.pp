@@ -36,6 +36,23 @@ node default {
     override       => [ 'ALL' ],
   }
 
+  # Deploy directory structure.
+  file {[
+    '/var/www/api/releases',
+    '/var/www/api/shared',
+  ]:
+    ensure => 'directory',
+    owner  => root,
+    group  => root,
+    mode   => '0644',
+  }
+
+  # Create a dummy configuration file if it does not exist.
+  exec { "config_file":
+    command => "echo 'Put some config here.' > /var/www/api/shared/config.yaml",
+    unless  => "test -s /var/www/api/shared/config.yaml",
+  }
+
   ##
   # Firewall.
   ##
