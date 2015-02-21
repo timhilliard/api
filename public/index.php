@@ -6,6 +6,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
 use Symfony\Component\Routing\RouteCollection;
 use DerAlex\Silex\YamlConfigServiceProvider;
+use Kir\Stores\KeyValueStores\Sqlite\PdoSqliteContextRepository;
 use Silex\Application;
 
 $app = new Silex\Application();
@@ -26,13 +27,21 @@ else {
 $app->register(new YamlConfigServiceProvider($config));
 
 /**
- * Error handling.
+ * Database.
+ */
+$app['db'] = new PdoSqliteContextRepository('sqlite:///var/cache/api/builds.db');
+
+/**
+ * Handling.
  */
 $app->error(function (\Exception $e, $code) {
   error_log($e);
   return "Something went wrong. Please contact the DrupalCI team.";
 });
 
+/**
+ * Routing.
+ */
 $app['routes'] = $app->extend('routes', function (RouteCollection $routes, Application $app) {
   $loader = new YamlFileLoader(new FileLocator(__DIR__ . '/../config'));
   $collection = $loader->load('routes.yml');

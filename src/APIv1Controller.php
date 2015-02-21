@@ -9,7 +9,7 @@ use Silex\Application;
  * Controller for Version 1 of the DrupalCI API.
  */
 
-class V1 extends APIController implements APIInterface {
+class APIv1Controller extends APIController implements APIInterface {
 
   /**
    * Information on how to use the API.
@@ -51,14 +51,23 @@ class V1 extends APIController implements APIInterface {
     $jenkins->setToken($app['config']['jenkins']['token']);
     $jenkins->setBuild($app['config']['jenkins']['job']);
     $jenkins->setQuery($query);
-    $return = $jenkins->send();
+    $url = $jenkins->send();
 
     // Check the return to make sure we had a successful submission.
-    if (empty($return)) {
+    if (empty($url)) {
       return new Response("The submission was not successful.");
     }
 
-    return new Response('The build is in the queue at the following address: ' . $return);
+    // Check if we already have an existing build.
+    $store = $app['db']->get('builds');
+    $build = json_decode($store->get('alfred', '[]'), true);
+    if ($builds) {
+      return new Response('A build already exists in the dispatch queue: ' . $url);
+    }
+
+    // Insert some records.
+    $app['db.builds']->insert("dispatcher", array("url" => $url));
+    return new Response('A build was created in the dispatcher queue: ' . $url);
   }
 
   /**

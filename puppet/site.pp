@@ -12,6 +12,7 @@ node default {
     'php-common',
     'php-cli',
     'nmap',
+    'php-pdo',
   ]:
     ensure => 'latest',
   }
@@ -40,10 +41,11 @@ node default {
   file {[
     '/var/www/api/releases',
     '/var/www/api/shared',
+    '/var/cache/api',
   ]:
     ensure => 'directory',
-    owner  => root,
-    group  => root,
+    owner  => 'apache',
+    group  => 'apache',
     mode   => '0644',
   }
 

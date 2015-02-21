@@ -4,8 +4,56 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6158891df2a4029ab0d00589568a13bc",
+    "hash": "1b13ce352a9f393dff0ac560b1f5744d",
     "packages": [
+        {
+            "name": "avryhof/database",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avryhof/database.git",
+                "reference": "09b26a56f8dac152704dddf4060168f70fe68e90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avryhof/database/zipball/09b26a56f8dac152704dddf4060168f70fe68e90",
+                "reference": "09b26a56f8dac152704dddf4060168f70fe68e90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "database.php"
+                ],
+                "psr-0": {
+                    "Detection": "namespaced/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                ""
+            ],
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amos Vryhof",
+                    "email": "amos@vryhofresearch.com"
+                }
+            ],
+            "description": "Database Abstraction Layer",
+            "homepage": "https://github.com/avryhof/database",
+            "keywords": [
+                "database",
+                "mysql",
+                "sqlite"
+            ],
+            "time": "2014-09-17 13:06:55"
+        },
         {
             "name": "deralex/yaml-config-service-provider",
             "version": "dev-master",
@@ -1138,16 +1186,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "dev-master",
+            "version": "2.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "28d21b57c189cb72829056353de603c4d4da55a0"
+                "reference": "62f8cd539ab2e2c25077aeb5f5ed3209acee3612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/28d21b57c189cb72829056353de603c4d4da55a0",
-                "reference": "28d21b57c189cb72829056353de603c4d4da55a0",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/62f8cd539ab2e2c25077aeb5f5ed3209acee3612",
+                "reference": "62f8cd539ab2e2c25077aeb5f5ed3209acee3612",
                 "shasum": ""
             },
             "require": {
@@ -1160,7 +1208,7 @@
             },
             "require-dev": {
                 "ext-xdebug": ">=2.1.4",
-                "phpunit/phpunit": "dev-master"
+                "phpunit/phpunit": "~4.1"
             },
             "suggest": {
                 "ext-dom": "*",
@@ -1170,7 +1218,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -1179,6 +1227,9 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                ""
+            ],
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1196,7 +1247,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-10-05 10:46:54"
+            "time": "2014-09-01 22:04:15"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1382,16 +1433,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "dev-master",
+            "version": "4.4.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "0b78eddd0519dd9bf7c35359287fa6b0adb17391"
+                "reference": "a267e5936f53d18aa20cf0de47fe055f80d280ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0b78eddd0519dd9bf7c35359287fa6b0adb17391",
-                "reference": "0b78eddd0519dd9bf7c35359287fa6b0adb17391",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a267e5936f53d18aa20cf0de47fe055f80d280ab",
+                "reference": "a267e5936f53d18aa20cf0de47fe055f80d280ab",
                 "shasum": ""
             },
             "require": {
@@ -1402,14 +1453,14 @@
                 "ext-spl": "*",
                 "php": ">=5.3.3",
                 "phpspec/prophecy-phpunit": "~1.0",
-                "phpunit/php-code-coverage": "3.0.*@dev",
+                "phpunit/php-code-coverage": "~2.0",
                 "phpunit/php-file-iterator": "~1.3.2",
                 "phpunit/php-text-template": "~1.2",
                 "phpunit/php-timer": "~1.0.2",
                 "phpunit/phpunit-mock-objects": "2.4.*@dev",
-                "sebastian/comparator": "1.1.*@dev",
+                "sebastian/comparator": "~1.0",
                 "sebastian/diff": "~1.1",
-                "sebastian/environment": "~1.2",
+                "sebastian/environment": "~1.1",
                 "sebastian/exporter": "~1.0",
                 "sebastian/global-state": "1.0.*@dev",
                 "sebastian/version": "~1.0",
@@ -1424,7 +1475,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.5.x-dev"
+                    "dev-master": "4.4.x-dev"
                 }
             },
             "autoload": {
@@ -1450,7 +1501,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-10-25 13:51:37"
+            "time": "2014-10-25 13:51:33"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2001,6 +2052,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "deralex/yaml-config-service-provider": 20,
+        "avryhof/database": 20,
         "phpunit/phpunit": 20
     },
     "prefer-stable": false,

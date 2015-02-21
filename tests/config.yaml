@@ -1,4 +1,4 @@
 jenkins:
-  host:  localhost
-  token: 123456
-  job:   test
+  host:  'dispatcher.dev.drupalci.org'
+  token: 'rNHMBIqAObUv2JuF0rPZ'
+  job:   'test'
