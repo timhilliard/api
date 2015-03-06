@@ -8,6 +8,6 @@ api_1:
   prefix: /drupalci/api/1
   resource: routes/1.yml
 
-api_1:
+mock:
   prefix: /drupalci/api/mock
   resource: routes/mock.yml
