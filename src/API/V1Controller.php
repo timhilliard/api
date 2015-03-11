@@ -9,7 +9,7 @@ use Silex\Application;
  * Controller for Version 1 of the DrupalCI API.
  */
 
-class APIv1Controller extends APIController implements APIInterface {
+class V1Controller extends BaseController {
 
   /**
    * Information on how to use the API.

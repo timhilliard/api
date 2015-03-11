@@ -2,10 +2,12 @@
   "require": {
     "silex/silex": "~1.2",
     "guzzlehttp/guzzle": "*",
-    "symfony/yaml":"~2.4",
-    "symfony/config":"v2.2.0",
+    "symfony/yaml":"~2.6",
+    "symfony/config":"~2.6",
+    "symfony/security":"~2.6",
     "deralex/yaml-config-service-provider": "1.0.x-dev",
-    "rkr/sqlite-key-value-store": "dev-master"
+    "rkr/sqlite-key-value-store": "dev-master",
+    "monolog/monolog": "~1.13@dev"
   },
   "require-dev": {
     "phpunit/phpunit": "4.4.*@dev",
@@ -14,8 +16,5 @@
   "minimum-stability": "dev",
   "config": {
     "bin-dir": "bin/"
-  },
-  "autoload": {
-    "psr-4" : { "API\\": "src/" }
   }
 }

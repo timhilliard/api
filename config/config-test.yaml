@@ -2,3 +2,5 @@ jenkins:
   host:  'dispatcher.dev.drupalci.org'
   token: 'rNHMBIqAObUv2JuF0rPZ'
   job:   'test'
+#log-file: '/path/to/file.log'
+log-file: '../../logs/app.log'
