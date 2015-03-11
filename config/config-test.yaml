@@ -4,3 +4,7 @@ jenkins:
   job:   'test'
 #log-file: '/path/to/file.log'
 log-file: '../../logs/app.log'
+salt: 'my-salt'
+users:
+  user1: 'password1'
+  user2: 'password2'
